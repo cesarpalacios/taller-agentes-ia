@@ -1,0 +1,9 @@
+.env
+node_modules/
+.venv*/
+email/.venv/
+email/token*.json
+email/client_secret*.json
+__pycache__/
+*.key
+*.log
