@@ -2,6 +2,9 @@
 # PASO 2 — Conecta OpenClaw al gateway de IA (FreeLLMAPI) y prueba la ruta
 set -e
 cd "$(dirname "$0")/.."
+# Cargar nvm (los scripts no heredan el PATH de Node en una terminal nueva)
+export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+command -v openclaw >/dev/null 2>&1 || { echo "❌ openclaw no está instalado o no está en el PATH — ejecuta primero: bash scripts/01_instalar.sh"; exit 1; }
 [ -f .env ] || { echo "❌ Falta .env — ejecuta primero: bash scripts/01b_freellmapi.sh"; exit 1; }
 set -a; . ./.env; set +a
 [ -n "${GATEWAY_URL:-}" ] && [ -n "${GATEWAY_KEY:-}" ] || { echo "❌ .env sin GATEWAY_URL/GATEWAY_KEY — ejecuta primero: bash scripts/01b_freellmapi.sh"; exit 1; }

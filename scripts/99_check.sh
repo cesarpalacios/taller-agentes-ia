@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # PASO 99 — Verificacion final del taller
 cd "$(dirname "$0")/.."
+# Cargar nvm (los scripts no heredan el PATH de Node en una terminal nueva)
+export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+command -v openclaw >/dev/null 2>&1 || { echo "❌ openclaw no está instalado o no está en el PATH — ejecuta primero: bash scripts/01_instalar.sh"; exit 1; }
 PUNTOS=0
 
 echo "1/3 🧠 Cerebro (gateway IA)..."
