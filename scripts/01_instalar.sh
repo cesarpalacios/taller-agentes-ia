@@ -19,8 +19,16 @@ else
   node_ok || { echo "❌ Node $(node -v) no cumple el mínimo de OpenClaw (>=24.16)"; exit 1; }
 fi
 
-echo "📦 Instalando OpenClaw..."
-npm install -g openclaw@latest
+# Poca RAM (<3 GB) + sin swap => npm es "Killed" por falta de memoria. Creamos 2 GB de swap.
+MEM_MB=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo)
+if [ "$MEM_MB" -lt 3000 ] && [ "$(swapon --show --noheadings | wc -l)" = "0" ]; then
+  echo "💾 RAM baja (${MEM_MB} MB): creando 2 GB de swap para que la instalación no falle..."
+  sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile >/dev/null && sudo swapon /swapfile
+  grep -q '/swapfile' /etc/fstab || echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab >/dev/null
+fi
+
+echo "📦 Instalando OpenClaw (puede tardar unos minutos)..."
+npm install -g openclaw@latest --no-fund --no-audit
 echo "✅ OpenClaw $(openclaw --version 2>/dev/null | head -1) instalado"
 
 echo "🧙 Asistente de configuración inicial..."

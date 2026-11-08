@@ -23,6 +23,20 @@ openclaw config set models.providers.freellmapi.apiKey --ref-provider freellmapi
 # 3. Permitir la ruta del proveedor
 openclaw config set agents.entries.main.modelPolicy.allow --strict-json '["freellmapi/*"]'
 
+# 3b. Asegurar que el Gateway de OpenClaw (el servicio de tu agente) esté corriendo
+sudo loginctl enable-linger "$USER" 2>/dev/null || true
+if ! openclaw gateway status --require-rpc >/dev/null 2>&1; then
+  echo "🚀 Iniciando el Gateway de OpenClaw..."
+  openclaw gateway install >/dev/null 2>&1 || true
+  openclaw gateway start >/dev/null 2>&1 || true
+  for i in $(seq 1 20); do
+    openclaw gateway status --require-rpc >/dev/null 2>&1 && break
+    sleep 2
+  done
+fi
+openclaw gateway status --require-rpc >/dev/null 2>&1 || { echo "❌ El Gateway de OpenClaw no arrancó. Ejecuta: openclaw gateway status   y revisa docs/TROUBLESHOOTING.md"; exit 1; }
+echo "✅ Gateway de OpenClaw en marcha"
+
 # 4. PRUEBA REAL de la ruta
 echo "🧪 Probando ruta de IA (debe responder PROOF-OK)..."
 openclaw infer model run --gateway --model freellmapi/auto --prompt "Reply with exactly: PROOF-OK" \
