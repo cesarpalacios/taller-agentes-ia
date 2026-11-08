@@ -6,6 +6,9 @@ cd "$(dirname "$0")/.."
 export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 command -v openclaw >/dev/null 2>&1 || { echo "❌ openclaw no está instalado o no está en el PATH — ejecuta primero: bash scripts/01_instalar.sh"; exit 1; }
 
+# Que el agente responda en español
+bash "$(dirname "$0")/idioma_es.sh" || echo "⚠️  No se pudo configurar el idioma; puedes ejecutar: bash scripts/idioma_es.sh"
+
 cat <<'PASOS'
 📱 PASO A — Crea tu bot (1 minuto):
    1. Abre Telegram y busca @BotFather
