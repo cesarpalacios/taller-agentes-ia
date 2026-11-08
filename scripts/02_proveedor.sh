@@ -2,9 +2,9 @@
 # PASO 2 — Conecta OpenClaw al gateway de IA (FreeLLMAPI) y prueba la ruta
 set -e
 cd "$(dirname "$0")/.."
-[ -f .env ] || { echo "❌ Falta .env — cp .env.example .env"; exit 1; }
+[ -f .env ] || { echo "❌ Falta .env — ejecuta primero: bash scripts/01b_freellmapi.sh"; exit 1; }
 set -a; . ./.env; set +a
-[ -n "${GATEWAY_URL:-}" ] && [ -n "${GATEWAY_KEY:-}" ] || { echo "❌ .env sin GATEWAY_URL/GATEWAY_KEY"; exit 1; }
+[ -n "${GATEWAY_URL:-}" ] && [ -n "${GATEWAY_KEY:-}" ] || { echo "❌ .env sin GATEWAY_URL/GATEWAY_KEY — ejecuta primero: bash scripts/01b_freellmapi.sh"; exit 1; }
 
 # 1. Guardar la key localmente (nunca se sube a git)
 mkdir -p ~/.openclaw/taller && umask 077

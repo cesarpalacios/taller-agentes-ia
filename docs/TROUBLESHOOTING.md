@@ -2,7 +2,7 @@
 
 | Síntoma | Causa | Solución |
 |---------|-------|----------|
-| `node: command not found` | Node no instalado o nueva terminal sin nvm | `export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh" && nvm use 22` |
+| `node: command not found` | Node no instalado o nueva terminal sin nvm | `export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh" && nvm use 24` |
 | `EACCES` al instalar con npm | intentaste con sudo | NO uses sudo — todo con nvm en tu usuario |
 | Gateway HTTP 000/timeout | Security Group de AWS cerrado o PC sin internet | Instructor: abrir TCP 3001 inbound. Tú: probar `ping google.com` |
 | Gateway HTTP 401 | GATEWAY_KEY mal copiada en `.env` | Revisar espacios/comillas en `.env` y repetir `02_proveedor.sh` |

@@ -7,10 +7,10 @@ Tu agente vive en un servidor en la nube. Aquí lo creas, una sola vez (~10 min)
 | Campo | Valor |
 |-------|-------|
 | Sistema operativo | **Ubuntu Server 22.04 o 24.04 LTS** |
-| Tipo de instancia | **t3.small** (o mayor) |
+| Tipo de instancia | **t3.medium** (mínimo t3.small) |
 | Disco | 20 GiB (gp3) |
 | Key pair | Nueva, formato `.pem` |
-| Firewall (Security Group) | SSH (puerto 22) |
+| Firewall (Security Group) | SSH (22) y **TCP 3001**, ambos con origen *My IP* |
 | Usuario de conexión | `ubuntu` |
 
 ## Pasos
@@ -24,10 +24,10 @@ Tu agente vive en un servidor en la nube. Aquí lo creas, una sola vez (~10 min)
 1. En la consola busca **EC2** → **Launch instance**.
 2. **Name:** `agente-<tu-nombre>`.
 3. **AMI:** *Ubuntu Server 22.04 LTS* (o 24.04).
-4. **Instance type:** `t3.small`.
+4. **Instance type:** `t3.medium`.
 5. **Key pair (login):** *Create new key pair* → nombre `taller` → tipo RSA → formato `.pem` → **Create**. Guarda el archivo descargado.
    > Algunos labs ya traen una llave `vockey`. Si tu instructor lo indica, úsala en lugar de crear una.
-6. **Network settings:** marca *Allow SSH traffic* (si quieres, limita a *My IP*).
+6. **Network settings:** *Edit* → deja la regla **SSH (22)** con origen **My IP** y pulsa *Add security group rule*: tipo **Custom TCP**, puerto **3001**, origen **My IP** (es el panel de tu gateway FreeLLMAPI).
 7. **Storage:** 20 GiB gp3.
 8. Pulsa **Launch instance**.
 
@@ -57,7 +57,7 @@ git clone https://github.com/cesarpalacios/taller-agentes-ia.git
 cd taller-agentes-ia
 ```
 
-Sigue con el flujo del [README](../README.md): `cp .env.example .env` y los scripts en orden.
+Sigue con el flujo del [README](../README.md): ejecuta los scripts en orden (`00`, `01`, `01b`…). El script `01b` instala **tu propio gateway FreeLLMAPI** y deja el `.env` listo, sin que nadie te entregue ninguna key.
 
 ## ⚠️ Importante
 
@@ -69,6 +69,7 @@ Sigue con el flujo del [README](../README.md): `cp .env.example .env` y los scri
 
 | Problema | Solución |
 |----------|----------|
+| No abre el panel `http://IP:3001` | Security Group → Inbound: agrega *Custom TCP 3001* con origen *My IP* (si tu IP cambió, actualízala) |
 | El círculo AWS no se pone verde | Espera 2–3 min; si sigue rojo, pulsa *Start Lab* de nuevo |
 | `Connection timed out` por SSH | Revisa que el Security Group permita SSH (22) y que usas la IP actual |
 | `Permission denied (publickey)` | Usuario correcto (`ubuntu`) y el `.pem` de esa instancia |
