@@ -17,7 +17,12 @@ Si alguien no logra su key o su gateway, puedes darle uno compartido. Úsalo sol
 - [ ] Anotar los dos valores que imprime: **GATEWAY_URL** y **GATEWAY_KEY**
 - [ ] Probar desde fuera: `curl -H "Authorization: Bearer KEY" http://IP:3001/v1/models`
 
-### 2. Proyecto Google Cloud para el correo (Gmail API)
+### 2. Gmail: cada participante crea su propio proyecto de Google Cloud (docs/GMAIL_OAUTH.md)
+- [ ] Probar tú mismo la guía `docs/GMAIL_OAUTH.md` de principio a fin con una cuenta nueva y cronometrar (≈5 min)
+- [ ] Pedir en la invitación que tengan una cuenta de Gmail/Google propia
+
+#### Plan B (opcional): proyecto compartido
+Solo si alguien no logra crear el suyo:
 - [ ] console.cloud.google.com → crear proyecto "taller-agentes-ia"
 - [ ] Habilitar **Gmail API**
 - [ ] Pantalla de consentimiento OAuth → External → agregar **TODOS los correos de asistentes** como *test users* ← por eso pedimos la lista con anticipación
@@ -28,7 +33,7 @@ Si alguien no logra su key o su gateway, puedes darle uno compartido. Úsalo sol
 - [ ] Repo ya está en GitHub (privado): invitar asistentes (Settings → Collaborators → email de GitHub) o generar fine-grained token de lectura y darlo el día del taller
 
 ## 📅 Día antes
-- [ ] Verificar lista de correos → todos como test users en Google Cloud
+- [ ] (Plan B) Si usas proyecto compartido: todos los correos como test users
 - [ ] (Plan B) Guardar GATEWAY_KEY del gateway central para quien la necesite
 - [ ] Probar el flujo COMPLETO tú mismo en una VM limpia (cronometra: debe dar ≤ 40 min)
 - [ ] Verificar `systemctl status freellmapi` en el EC2
@@ -44,7 +49,7 @@ Si alguien no logra su key o su gateway, puedes darle uno compartido. Úsalo sol
 - **5-15**: PASO 01 — todos instalando (circula por la sala; el script es la clase)
 - **15-30**: PASO 01b + 02 — cada uno instala SU gateway, agrega su key gratuita y debe ver PROOF-OK antes de seguir
 - **30-42**: PASO 03 — BotFather en el celular + pairing. Momento "wow": todos chateando con su agente
-- **42-52**: PASO 04 — OAuth Gmail (aquí salen los errores de test users → tener TROUBLESHOOTING a mano)
+- **42-52**: PASO 04 — OAuth Gmail (errores típicos: olvidar agregarse como usuario de prueba, o tipo de cliente que no es Escritorio → ver docs/GMAIL_OAUTH.md)
 - **52-60**: Reto libre: que le pidan a su agente algo real + check final + foto grupal
 
 ## 🧹 Después

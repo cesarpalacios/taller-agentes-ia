@@ -34,7 +34,7 @@ bash scripts/01_instalar.sh    # instala Node + OpenClaw (~5 min)
 bash scripts/01b_freellmapi.sh # instala TU gateway FreeLLMAPI, agrega tu key gratuita y configura .env
 bash scripts/02_proveedor.sh   # conecta OpenClaw a tu gateway → prueba PROOF-OK
 bash scripts/03_telegram.sh    # crea tu bot y habla con tu asistente
-bash scripts/04_email.sh       # conecta tu Gmail y envía un correo de prueba
+bash scripts/04_email.sh       # crea tu acceso a Gmail (tu propio proyecto Google) y envía un correo de prueba
 bash scripts/99_check.sh       # verificación final 🎉
 ```
 
@@ -52,7 +52,7 @@ bash scripts/99_check.sh       # verificación final 🎉
 
 ## ✅ Requisitos (antes de llegar)
 
-1. Correo electrónico activo — **enviado al organizador con anticipación**
+1. Una cuenta de **Gmail / Google** propia (con ella crearás tu propio acceso a la API de Gmail en el paso 04: [guía](docs/GMAIL_OAUTH.md))
 2. Cuenta de GitHub (gratis — github.com)
 3. Telegram instalado en tu celular
 4. Una **key gratuita de IA**: crea cuenta en [Groq](https://console.groq.com/keys) o [Google AI Studio](https://aistudio.google.com/apikey) y genera una API key (gratis, ~3 min)
