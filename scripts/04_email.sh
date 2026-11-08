@@ -62,5 +62,10 @@ set -a; [ -f ../.env ] && . ../.env; set +a
 DEST="${GMAIL_TEST_TO:-}"
 case "$DEST" in ""|tu-correo@gmail.com) DEST="";; esac
 [ -n "$DEST" ] || read -rp "📧 ¿A qué correo enviamos la prueba?: " DEST
-./.venv/bin/python gmail_enviar.py "$DEST" \
-  && echo -e "\n✅ PASO 4 COMPLETO — revisa la bandeja de $DEST\n➡️  Continúa con: bash scripts/99_check.sh"
+./.venv/bin/python gmail_enviar.py "$DEST"
+
+# 5. Enseñarle a TU AGENTE a enviar correos (skill "enviar-correo") para que lo haga desde Telegram
+cd ..
+bash scripts/skill_correo.sh
+
+echo -e "\n✅ PASO 4 COMPLETO — revisa la bandeja de $DEST\n➡️  Prueba desde Telegram: /new y luego 'escribe y envía un correo a $DEST sobre la IA en el trabajo'\n➡️  Continúa con: bash scripts/99_check.sh"
