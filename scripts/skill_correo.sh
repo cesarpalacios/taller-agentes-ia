@@ -40,6 +40,20 @@ $REPO/email/.venv/bin/python $REPO/email/gmail_enviar.py --to "DESTINATARIO" --s
 EOF
 
 echo "✅ Skill 'enviar-correo' instalada en $DIR"
+
+# Refuerzo en AGENTS.md (reglas de operación que OpenClaw siempre inyecta al agente)
+AGENTS="$WS/AGENTS.md"; MARK="<!-- taller-correo -->"
+touch "$AGENTS"
+if ! grep -q "$MARK" "$AGENTS"; then
+  cat >> "$AGENTS" <<EOF
+
+$MARK
+## Correo electrónico
+- SÍ puedes enviar correos: tienes la skill \`enviar-correo\` (Gmail del usuario) y la herramienta \`exec\`.
+- Cuando el usuario pida enviar/mandar un correo, redáctalo y ENVÍALO con esa skill. Nunca respondas que no hay servicio de correo ni le pidas que lo envíe él.
+EOF
+  echo "✅ Regla de correo añadida a $AGENTS"
+fi
 if command -v openclaw >/dev/null 2>&1; then
   openclaw skills list 2>/dev/null | grep -i "enviar-correo" || echo "ℹ️  No aparece aún en 'openclaw skills list'; reinicia con: openclaw gateway restart"
 fi
