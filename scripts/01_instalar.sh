@@ -35,4 +35,13 @@ echo "🧙 Asistente de configuración inicial..."
 echo "   👉 Cuando pregunte por MODELO/PROVEEDOR elige: Skip / Omitir (lo configuramos en el paso 02)"
 openclaw onboard --non-interactive --accept-risk 2>/dev/null || openclaw onboard
 
-echo -e "\n✅ PASO 1 COMPLETO — continúa con: bash scripts/01b_freellmapi.sh"
+# Asegurar que nvm se cargue en terminales nuevas
+grep -q 'NVM_DIR' "$HOME/.bashrc" 2>/dev/null || {
+  echo 'export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"' >> "$HOME/.bashrc"
+}
+
+echo -e "\n✅ PASO 1 COMPLETO"
+echo "⚠️  IMPORTANTE: este script corre en un subproceso, así que TU terminal actual todavía no ve 'openclaw'."
+echo "   Ejecuta ahora:   source ~/.bashrc      (o cierra y abre la terminal / reconéctate por SSH)"
+echo "   Comprueba con:   openclaw --version"
+echo "➡️  Luego continúa con: bash scripts/01b_freellmapi.sh"
