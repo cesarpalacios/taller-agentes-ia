@@ -43,7 +43,7 @@ bash scripts/99_check.sh       # verificación final 🎉
 | Min | Actividad | Script |
 |-----|-----------|--------|
 | Antes | Paso 0: crear tu EC2 (hazlo al llegar o antes) | [guía](docs/00_crear_ec2.md) |
-| 0-5 | Intro + demo del instructor | — |
+| 0-5 | Intro + demo | — |
 | 5-15 | Instalar Node + OpenClaw | 01 |
 | 15-30 | Instalar tu gateway FreeLLMAPI + conectarlo a OpenClaw | 01b + 02 |
 | 30-42 | Tu bot de Telegram — primer chat con tu agente | 03 |
@@ -56,7 +56,7 @@ bash scripts/99_check.sh       # verificación final 🎉
 2. Cuenta de GitHub (gratis — github.com)
 3. Telegram instalado en tu celular
 4. Una **key gratuita de IA**: crea cuenta en [Groq](https://console.groq.com/keys) o [Google AI Studio](https://aistudio.google.com/apikey) y genera una API key (gratis, ~3 min)
-5. Acceso a **AWS Academy Learner Lab** (invitación del instructor)
+5. Acceso a **AWS Academy Learner Lab** (o una cuenta de AWS propia)
 6. Sin necesidad de saber programar — todo es copiar y ejecutar
 
 ## 🛠️ Si algo falla
@@ -65,8 +65,8 @@ Mira `docs/TROUBLESHOOTING.md` o levanta la mano — hay solución para todo.
 
 ## 🔒 Privacidad
 
-Este repo es privado. Tu `.env`, tokens y credenciales NUNCA se suben a GitHub (están en `.gitignore`).
+Tu `.env`, tokens y credenciales NUNCA deben subirse a GitHub (están en `.gitignore`). Cada quien usa sus propias cuentas y claves.
 
 ---
 
-Instructor: Cesar Palacios · cesar.palacios@aossas.com
+Autor: Cesar Palacios

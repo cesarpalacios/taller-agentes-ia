@@ -12,7 +12,7 @@
 | Google: "access blocked" / 403 access_denied | tu correo NO está como *Usuario de prueba* en TU proyecto | Google Cloud → Pantalla de consentimiento → Usuarios de prueba → agrega tu correo (ver docs/GMAIL_OAUTH.md) |
 | `gmail_setup.py`: la página final no carga (localhost:8080) | es lo esperado en un servidor | Copia la URL completa de la barra de direcciones y pégala en la terminal |
 | `python3: command not found` | PC muy capado | Pedir al admin de sala instalar python3-venv, o usar WSL |
-| ¿Se subió mi .env o token a GitHub? | no debería | `git status` — si aparecen, NO hagas push; avisa al instructor |
+| ¿Se subió mi .env o token a GitHub? | no debería | `git status` — si aparecen, NO hagas push; revisa que `.gitignore` esté intacto y quita esos archivos del índice (`git rm --cached`) |
 
 ## Comandos útiles de diagnóstico
 ```bash

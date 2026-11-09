@@ -1,6 +1,6 @@
 # Paso 4 — Crea tu propio acceso a Gmail (Google Cloud)
 
-Cada participante usa **su propio proyecto de Google Cloud**: nadie te entrega credenciales.
+Usas **tu propio proyecto de Google Cloud**; no necesitas credenciales de nadie más.
 Todo se hace en el **navegador de tu PC**, con **tu cuenta de Google** (~5 min). No requiere tarjeta.
 
 ## 1. Proyecto

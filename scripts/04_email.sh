@@ -3,7 +3,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-# 1. Credenciales OAuth: las creas tú en Google Cloud (nadie te entrega nada)
+# 1. Credenciales OAuth: las creas tú en Google Cloud (con tu propio proyecto y tu propia cuenta)
 if [ ! -f email/client_secret_taller.json ]; then
   cat <<'GUIA'
 
